@@ -32,10 +32,10 @@
 </script>
 <style scoped>
     .svg-icon {
-        width: 1em;
-        height: 1em;
-        vertical-align: -0.15em;
+        width: 1rem;
+        height: 1rem;
+        vertical-align: -0.15rem;
         fill: currentColor;
-        overflow: hidden;
+        margin-right: .5rem;
     }
 </style>

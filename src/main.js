@@ -4,7 +4,9 @@ import router from './router'
 import store from './store'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
-//import '@/icons'
+import '@/icons'
+import _ from 'lodash'
+Vue.prototype.lodash = _
 Vue.config.productionTip = false
 Vue.use(Antd)
 router.beforeEach((to, from, next) => {

@@ -4,8 +4,7 @@
                 :trigger="null"
                 collapsible
                 v-model="$store.getters.collapsed"
-                style="height: 100%"
-        >
+                style="height: 100%">
             <div class="logo">
                 <p v-if="$store.getters.logoShow">LIU</p>
                 <p v-else>vue-antd-liujin后台模板</p>
@@ -19,8 +18,7 @@
                 <template v-for="item in routes">
                     <a-menu-item v-if="item.isOne" :key="item.path">
                         <router-link :to="item.path">
-                            <!--<svg-icon :icon-class="item.typeIcon">21212</svg-icon>-->
-                            <a-icon :type="item.typeIcon"></a-icon>
+                            <svg-icon :icon-class="item.typeIcon"></svg-icon>
                             <span>{{ item.meta.title }}</span>
                         </router-link>
                     </a-menu-item>

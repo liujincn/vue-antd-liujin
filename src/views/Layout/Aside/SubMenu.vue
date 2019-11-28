@@ -1,17 +1,14 @@
 <template functional>
     <a-sub-menu :key="props.menuInfo.path">
     <span slot="title">
-        <!--<svg-icon :icon-class=" props.menuInfo.typeIcon"></svg-icon>-->
-        <a-icon :type=" props.menuInfo.typeIcon"></a-icon>
-
+        <svg-icon :icon-class=" props.menuInfo.typeIcon"></svg-icon>
         <span>{{ props.menuInfo.meta.title }}</span>
     </span>
         <template v-for="item in props.menuInfo.children">
             <a-menu-item v-if="!item.children" :key="item.path">
                 <router-link :to="item.path">
-                <a-icon :type="item.typeIcon"></a-icon>
-                    <!--svg-icon :icon-class="item.typeIcon"></svg-icon>-->
-                <span>{{ item.meta.title }}</span>
+                    <svg-icon :icon-class="item.typeIcon"></svg-icon>
+                    <span>{{ item.meta.title }}</span>
                 </router-link>
             </a-menu-item>
             <sub-menu v-else :key="item.path" :menu-info="item"></sub-menu>

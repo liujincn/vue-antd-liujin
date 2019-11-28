@@ -23,7 +23,7 @@
         },
         methods: {
             getBreadcrumb() {
-                let matched = this.$route.matched.filter(item => item.name)
+                let matched = this.$route.matched
                 if (matched[0].name === 'index') {
                     this.breadList = matched
                 }

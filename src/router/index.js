@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Layout from '@/views/Layout/Layout'
 import Home from '@/views/Home/Index'
 //懒加载
-const Table = () => import('@/views/Table/TableList')
+const Log = () => import('@/views/Log/Index')
 const NotFound = () => import('@/page404')
 const FormPost = () => import('@/views/Form/FormPost')
 const FormDemo = () => import('@/views/Form/FormDemo')
@@ -42,20 +42,20 @@ let defaultRouter = [
     {
         path: '/form',
         name: 'form',
-        typeIcon: 'home',
+        typeIcon: 'form',
         meta: {title: 'form表单'},
         component: Layout,
         children: [
             {
                 path: '/form-post',
-                typeIcon: 'home',
+                typeIcon: 'formPost',
                 name: 'form-post',
                 meta: {title: '发布'},
                 component: FormPost
             },
             {
                 path: '/form-demo',
-                typeIcon: 'home',
+                typeIcon: 'formDemo',
                 name: 'form-demo',
                 meta: {title: '示例'},
                 component: FormDemo
@@ -71,14 +71,14 @@ let defaultRouter = [
         children: [
             {
                 path: '/message',
-                typeIcon: 'home',
+                typeIcon: 'message',
                 name: 'message',
                 meta: {title: '聊天反馈'},
                 component: Message
             },
             {
                 path: '/bug',
-                typeIcon: 'home',
+                typeIcon: 'bug',
                 name: 'bug',
                 meta: {title: 'Bug反馈'},
                 component: Bug
@@ -86,61 +86,61 @@ let defaultRouter = [
         ]
     },
     {
-        path: '/table',
+        path: '/log',
         isOne: true,
-        typeIcon: 'home',
-        name: 'table',
-        meta: {title: '表格'},
+        typeIcon: 'log',
+        name: 'log',
+        meta: {title: '日志'},
         component: Layout,
         children: [
             {
-                path: '/table',
-                component: Table,
+                path: '/log',
+                component: Log
             }
         ]
     },
     {
         path: '/multistage',
         name: 'multistage',
-        typeIcon: 'smile',
+        typeIcon: 'catalog',
         meta: {title: '多级目录'},
         component: Layout,
         children: [
             {
                 path: '/second',
-                typeIcon: 'home',
+                typeIcon: 'two',
                 name: 'second',
                 meta: {title: '二级-1'},
                 component: Second
             },
             {
                 path: '/three',
-                typeIcon: 'home',
+                typeIcon: 'two',
                 name: 'three',
                 meta: {title: '二级-2'},
                 component: CommerView,
                 children: [
                     {
                         path: '/three-1',
-                        typeIcon: 'home',
+                        typeIcon: 'three',
                         meta: {title: '三级-1'},
                         component: Three
                     },
                     {
                         path: '/three-2',
-                        typeIcon: 'home',
+                        typeIcon: 'three',
                         meta: {title: '三级-2'},
                         component: CommerView,
                         children: [
                             {
                                 path: '/four-1',
-                                typeIcon: 'home',
+                                typeIcon: 'four',
                                 meta: {title: '四级-1'},
                                 component: Four
                             },
                             {
                                 path: '/four-2',
-                                typeIcon: 'home',
+                                typeIcon: 'four',
                                 meta: {title: '四级-2'},
                                 component: Four
                             }
@@ -277,10 +277,11 @@ let addRouter = [
 
 
 ]
+export {defaultRouter, addRouter}
 export default new Router({
     scrollBehavior: () => ({y: 0}),
     routes: defaultRouter
 })
-export {defaultRouter, addRouter}
+
 
 

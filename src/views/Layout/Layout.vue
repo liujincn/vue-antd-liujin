@@ -6,7 +6,7 @@
                 <layout-header></layout-header>
 
                 <a-layout-content
-                        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '1780px' }">
+                        :style="{ padding: '24px', }">
                     <transition name="main" mode="out-in">
                         <keep-alive>
                             <router-view></router-view>
@@ -50,4 +50,7 @@
         height: 32px;
         margin: 16px;
     }
+    .ant-menu-inline-collapsed .ant-menu-submenu-title span span{  opacity: 0}
+    .ant-menu-inline-collapsed .ant-menu-item a span{  opacity: 0}
+
 </style>

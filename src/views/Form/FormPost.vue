@@ -81,12 +81,12 @@
                 <a-row :gutter="24">
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="金币：">
-                            <a-input @change="addMoney" maxlength="9" v-model="money" placeholder="请输入金币数额"></a-input>
+                            <a-input @change="addMoney" maxlength="9" v-model="money" placeholder="请输入金币数额" allowClear></a-input>
                         </a-form-item>
                     </a-col>
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" label="钻石：">
-                            <a-input @change="addGold" maxlength="9" v-model="gold" placeholder="请输入钻石数额"></a-input>
+                            <a-input @change="addGold" maxlength="9" v-model="gold" placeholder="请输入钻石数额" allowClear></a-input>
                         </a-form-item>
                     </a-col>
                 </a-row>
@@ -101,8 +101,7 @@
                                 <template slot='title'>系统只模糊搜索前20条物品</template>
                                 <a-auto-complete v-model="goodsId" @select="handleSelectGoodsId" placeholder="请输入物品ID">
                                     <template slot="dataSource">
-                                        <a-select-option v-for="item in goodItems" :key="item.id">{{item.id}}
-                                        </a-select-option>
+                                        <a-select-option v-for="item in goodItems" :key="item.id">{{item.id}}</a-select-option>
                                     </template>
                                 </a-auto-complete>
                             </a-tooltip>
@@ -113,11 +112,9 @@
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="物品名称：">
                             <a-tooltip>
                                 <template slot='title'>系统只模糊搜索前20条物品</template>
-                                <a-auto-complete v-model="goodsName" @select="handleSelectGoodsName"
-                                                 placeholder="请输入物品名称">
+                                <a-auto-complete v-model="goodsName" @select="handleSelectGoodsName" placeholder="请输入物品名称">
                                     <template slot="dataSource">
-                                        <a-select-option v-for="item in goodItems" :key="item.name">{{item.name}}
-                                        </a-select-option>
+                                        <a-select-option v-for="item in goodItems" :key="item.name">{{item.name}}</a-select-option>
                                     </template>
                                 </a-auto-complete>
                             </a-tooltip>
