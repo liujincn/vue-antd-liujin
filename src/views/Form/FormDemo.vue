@@ -274,12 +274,12 @@
                     title: '此操作不可撤回, 是否继续?',
                     okText: '确定',
                     cancelText: '取消',
-                    onOk() {
+                    onOk:()=> {
                         console.log(record.id)
+                        this.$message.success('操作成功')
                     },
-                    onCancel() {
-                        console.log(record.id)
-                    }
+                    onCancel:() => { this.$message.warning('已取消')}
+
                 })
             },
             stop(record) {

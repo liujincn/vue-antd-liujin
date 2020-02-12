@@ -6,16 +6,27 @@ import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import '@/icons'
 import _ from 'lodash'
+
 Vue.prototype.lodash = _
 Vue.config.productionTip = false
 Vue.use(Antd)
 router.beforeEach((to, from, next) => {
-    if (store.getters.addRouters.length === 0) {
-        store.dispatch('newRoutes')
-        router.addRoutes(store.getters.addRouters)
-        next()
-    } else {
-        next()
+    if (store.getters.token) {
+        if (to.path === '/login') {
+            next({path: '/'})
+        }else{
+            store.dispatch('newRoutes')
+            //router.addRoutes(store.getters.addRouters)
+            next()
+        }
+    }
+    else {
+        if (to.path === '/login') {
+            next()
+        }
+        else{
+        next({path: '/login'})
+        }
     }
 })
 

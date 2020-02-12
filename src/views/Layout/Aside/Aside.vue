@@ -59,7 +59,7 @@
             },
             //  菜单选择
             selectMenu(key) {
-                console.log(key)
+                //console.log(key)
                 // 左边菜单栏默认展开
                 let matched = this.$route.matched.filter(item => item.path)
                 for (let i = 0, len = matched.length; i < len; i++) {

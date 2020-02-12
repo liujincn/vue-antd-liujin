@@ -5,6 +5,7 @@ import Home from '@/views/Home/Index'
 //懒加载
 const Log = () => import('@/views/Log/Index')
 const NotFound = () => import('@/page404')
+const Login = () => import('@/views/Login/Index')
 const FormPost = () => import('@/views/Form/FormPost')
 const FormDemo = () => import('@/views/Form/FormDemo')
 const Message = () => import('@/views/Feedback/Message')
@@ -23,6 +24,11 @@ let defaultRouter = [
     {
         path: '/404',
         component: NotFound,
+        hidden: true,
+    },
+    {
+        path: '/login',
+        component: Login,
         hidden: true,
     },
     {
@@ -156,125 +162,6 @@ let defaultRouter = [
 ]
 
 let addRouter = [
-
-    /*    {
-            path: '/',
-            typeIcon:'user',
-            name: '公告',
-            component: Layout,
-            children: [
-                {
-                    path: '/pagePermissions',
-                    typeIcon:'star',
-                    name: '公告查询',
-                    component: pagePermissions,
-                },
-                {
-                    path: '/btnPermissions',
-                    typeIcon:'heart',
-                    name: '公告推送',
-                    component: btnPermissions,
-                }
-            ]
-        },
-        {
-            path: '/',
-            typeIcon:'team',
-            name: '广播',
-            component: Layout,
-            children: [
-                {
-                    path: '/dataTable',
-                    typeIcon:'home',
-                    name: '广播查询',
-                    component: DataTable,
-                },
-                {
-                    path: '/filterTable',
-                    typeIcon:'eye',
-                    name: '广播推送',
-                    component: FilterTable,
-                }
-            ]
-        },
-
-        {
-            path: '/',
-            typeIcon:'like',
-            name: '邮件任务',
-            component: Layout,
-            children: [
-                {
-                    path: '/erji1',
-                    typeIcon:'home',
-                    name: '邮件群发',
-                    component: Erji,
-                },
-                {
-                    path: '/erji2',
-                    typeIcon:'scan',
-                    name: '任务查询',
-                    component: Erji2,
-                }
-            ]
-        },
-        {
-            path: '/',
-            typeIcon:'bulb',
-            name: '统计',
-            component: Layout,
-            //meta: {role: ['superAdmin']},
-            children: [
-                {
-                    path: '/upload',
-                    typeIcon:'bell',
-                    name: '关卡统计',
-                    component: Upload,
-                },
-                {
-                    path: '/upload',
-                    typeIcon:'key',
-                    name: '在线分析',
-                    component: Upload,
-                }
-            ]
-        },
-        {
-            path: '/',
-            typeIcon:'wifi',
-            name: '模拟充值',
-            component: Layout,
-            children: [
-                {
-                    path: '/markdown',
-                    typeIcon:'shop',
-                    name: '充值申请',
-                    component: Markdown,
-                },
-                {
-                    path: '/wangeditor',
-                    typeIcon:'shop',
-                    name: '我的订单',
-                    component: WangeditorView,
-                }
-            ]
-        },
-        {
-            path: '/navClassifies',
-            typeIcon:'home',
-            name: '英雄评论',
-            component: Layout,
-            isOne: true,
-            children: [
-                {
-                    path: '/navClassifies',
-                    typeIcon:'home',
-                    name: '英雄评论管理',
-                    component: Layout,
-                }
-            ]
-        },*/
-
 
 ]
 export {defaultRouter, addRouter}

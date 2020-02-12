@@ -129,7 +129,7 @@
             overflow-x: auto;
             li {
                 height: 30px;
-                line-height: 31px;
+                line-height: 30px;
                 @extend %cursor;
                 margin-#{$top}: 6px;
                 margin-#{$right}: 5px;
