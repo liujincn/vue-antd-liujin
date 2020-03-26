@@ -5,7 +5,7 @@
                 <li v-for="(item, index) in $store.getters.tagNav" @contextmenu.prevent="openMenu(item,$event,index)"
                     :key="item.title" class="tagNav" :class="{ active: $route.path === item.path }">
                     <router-link :to="item.path">{{ item.title}}</router-link>
-                    <a-icon v-if="index !== 0" type="close" @click="removeTag(item)"></a-icon>
+                    <a-icon v-if="index !== 0" type="close" @click="removeTag(item)" :style="{ fontSize: '8px' }"></a-icon>
                 </li>
             </transition-group>
         </div>
@@ -70,10 +70,8 @@
     }
 
     .list-enter, .list-leave-to
-        /* .list-leave-active for below version 2.1.8 */
     {
         opacity: 0;
-        transform: translateY(30px);
 
     }
 
@@ -83,7 +81,7 @@
 
     .list-leave-active {
         position: absolute;
-        transition: all 1s;
+        transition: all 0.5s;
     }
 </style>
 <style lang="scss">
@@ -113,11 +111,7 @@
 
     .tagNavBox {
         @extend %w100;
-        height: 42px;
-        min-height: 42px;
-        overflow: hidden;
-        border-#{$top}: 1px solid #f6f6f6;
-        border-#{$bottom}: 1px solid #d8dce5;
+         padding-top: 10px;
 
         -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
@@ -131,12 +125,12 @@
                 height: 30px;
                 line-height: 30px;
                 @extend %cursor;
-                margin-#{$top}: 6px;
                 margin-#{$right}: 5px;
-
+                 text-align: center;
+                 border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
                 border: 1px solid #cccccc;
-
-                overflow: hidden;
+                 border-bottom: none;
                 &:not(:first-child) {
                     padding-#{$right}: 10px;
                     min-width: 80px;
