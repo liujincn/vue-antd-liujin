@@ -6,7 +6,6 @@ import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import '@/icons'
 import _ from 'lodash'
-
 Vue.prototype.lodash = _
 Vue.config.productionTip = false
 Vue.use(Antd)

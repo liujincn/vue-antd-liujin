@@ -152,8 +152,7 @@
                             <a-date-picker
                                     style="width:230px"
                                     :disabledDate="pickerOptionsStart"
-                                    @change="getRoleCreateAfter"
-                                    v-model="roleCreateAfter"
+                                    v-model="queryData.roleCreateAfter"
                                     placeholder="选择日期">
                             </a-date-picker>
                         </a-form-item>
@@ -167,8 +166,7 @@
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="此时间：">
                             <a-date-picker style="width:230px"
                                     :disabledDate="pickerOptionsEnd"
-                                           v-model="roleCreateBefore"
-                                           @change="getRoleCreateBefore"
+                                           v-model="queryData.roleCreateBefore"
                                     placeholder="选择日期">
                             </a-date-picker>
                         </a-form-item>
@@ -194,8 +192,8 @@
                         <a-form-item label="定时起始时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
                             <a-date-picker style="width:230px"
                                     :disabledDate="sendStart"
-                                           v-model="sendStartDate"
-                                           @change="getSendStartDate"
+                                           format="YYYY-MM-DD"
+                                           v-model="queryData.sendStartDate"
                                     placeholder="选择日期">
                             </a-date-picker>
 
@@ -206,9 +204,9 @@
                         <a-form-item label="定时结束时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
                             <a-date-picker
                                     style="width:230px"
+                                    format="YYYY-MM-DD"
                                     :disabledDate="sendEnd"
-                                    v-model="sendEndDate"
-                                    @change="getSendEndDate"
+                                    v-model="queryData.sendEndDate"
                                     placeholder="选择日期">
                             </a-date-picker>
 
@@ -374,23 +372,19 @@
                         {languageId: 1, title: '', content: '', desc: '中文'},
                         {languageId: 2, title: '', content: '', desc: '英文'}
                     ],
-                    roleCreateBefore: '',
-                    roleCreateAfter: '',
+                    roleCreateBefore: null,
+                    roleCreateAfter:null,
                     keepDays: '30',
                     level: '0',
                     taskType: 1,
-                    sendStartDate: '',
-                    sendEndDate:'',
+                    sendStartDate: null,
+                    sendEndDate:null,
                     sendTimes: [],
                     sendInterval: 0,
                     rechargeNum: 0,
                     reason: ''
 
                 },
-                roleCreateBefore: null,
-                roleCreateAfter: null,
-                sendStartDate: null,
-                sendEndDate:null,
                 receiversType: '0',
                 receiversTips: '',
                 receiversTipsClass: 'danger',
@@ -548,33 +542,22 @@
             // 物品tag关闭
             handleGoodsTagClose (tag) {
                 this.goodsList.splice(this.goodsList.indexOf(tag), 1)
-                console.log(this.goodsList)
             },
             // 时间角色创建选择
             pickerOptionsStart(startValue) {
-                const endValue = this.roleCreateBefore;
+                const endValue = this.queryData.roleCreateBefore;
                 if (!startValue || !endValue) {
                        return false
                     }
                 return startValue.valueOf() > endValue.valueOf();
             },
             pickerOptionsEnd(endValue){
-                const startValue = this.roleCreateAfter;
+                const startValue = this.queryData.roleCreateAfter;
                 if (!endValue || !startValue) {
                     return false
                 }
                 return startValue.valueOf() >= endValue.valueOf();
 
-            },
-            getRoleCreateAfter(dateString)
-            {
-                this.queryData.roleCreateAfter =moment(dateString).format("YYYY-MM-DD")
-                console.log(this.queryData.roleCreateAfter)
-            },
-            getRoleCreateBefore(dateString)
-            {
-                this.queryData.roleCreateBefore =moment(dateString).format("YYYY-MM-DD")
-                console.log(this.queryData.roleCreateBefore)
             },
             // 是否定时发送
             changeTaskType () {
@@ -583,37 +566,27 @@
                     this.queryData.sendInterval = 0
                 } else {
                     this.queryData.taskType = 0
-                    this.sendStartDate = null
-                    this.sendEndDate = null
+                    this.queryData.sendStartDate = null
+                    this.queryData.sendEndDate = null
                     this.queryData.sendInterval = ''
                     this.queryData.sendTimes = []
                 }
             },
             // 时间角色创建选择
             sendStart(startValue) {
-                const endValue = this.sendEndDate
+                const endValue = this.queryData.sendEndDate
                 if (!startValue || !endValue) {
                     return false
                 }
                 return startValue.valueOf() > endValue.valueOf()
             },
             sendEnd(endValue){
-                const startValue = this.sendStartDate
+                const startValue = this.queryData.sendStartDate
                 if (!endValue || !startValue) {
                     return false
                 }
                 return startValue.valueOf() >= endValue.valueOf();
 
-            },
-            getSendStartDate(dateString)
-            {
-                this.queryData.sendStartDate =moment(dateString).format("YYYY-MM-DD")
-                console.log(this.queryData.sendStartDate)
-            },
-            getSendEndDate(dateString)
-            {
-                this.queryData.sendEndDate =moment(dateString).format("YYYY-MM-DD")
-                console.log(this.queryData.sendEndDate)
             },
             // 增加定时tag
             addTimesTag () {
