@@ -1,12 +1,12 @@
 <template>
-  <div class="single-selector">
-    <a-select class="input-item" placeholder="请选择查询类型" v-model="selectedId" @change="selector">
+  <div>
+    <a-select class="input-item" placeholder="请选择查询类型" v-model="selectedId" @change="changeValue">
 
       <a-select-option v-for="item in data" :value="item.id" :key="item.id">{{item.name}}</a-select-option>
 
     </a-select>
 <template v-for="(item, index) in data">
-    <a-input  :key="item.id" v-if="item.id === selectedId" v-model="selectedTxt" @input="handleInput" :placeholder="'请输入'+ data[index].name" style="width: 200px" allowClear></a-input>
+    <a-input  class="input-item" :key="item.id" v-if="item.id === selectedId" v-model="selectedTxt" @input="handleInput" :placeholder="'请输入'+ data[index].name" style="width: 200px" allowClear></a-input>
 </template>
   </div>
 </template>
@@ -38,13 +38,18 @@ export default {
       selectedTxt: ''
     }
   },
+    watch: {
+        'selectedTxt' () {
+            if (this.selectedTxt.length === 0) {
+                this.$emit('select', {})
+            }
+        }
+    },
   methods: {
-    selector (value) {
+      changeValue (value) {
       this.selectedId = value
       this.selectedType = this.data[value - 1].type
       this.selectedTxt = ''
-      const type = this.selectedType
-      this.$emit('select', { label: value, type: type })
     },
     handleInput () {
       const id = this.selectedId
@@ -54,7 +59,7 @@ export default {
           this.selectedTxt = this.selectedTxt.replace(/[^\d]/g, '')
         }
       })
-      this.$emit('input', { [type]: this.selectedTxt })
+      this.$emit('select', { [type]: this.selectedTxt })
     }
   }
 }
@@ -62,10 +67,7 @@ export default {
 
 <style scoped>
   .input-item{
-    width: 200px; margin-right: 10px;
-  }
-  .single-selector{
-    display: inline-block;
+    width: 200px; margin-right: 10px;display: inline-block;
   }
 
 </style>

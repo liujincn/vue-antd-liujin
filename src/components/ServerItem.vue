@@ -36,5 +36,4 @@
         display: inline-block;
         width: 200px;
     }
-
 </style>

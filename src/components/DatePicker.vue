@@ -15,10 +15,11 @@
 
     <a-date-picker
             :disabledDate="disabledStartDate"
+            style="width: 200px;margin-right: 10px;"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             v-model="queryData.startTime"
-            placeholder="Start"
+            placeholder="开始时间"
             @openChange="handleStartOpenChange"
             @change="changeStartTime"
     />
@@ -27,7 +28,7 @@
             :disabledDate="disabledEndDate"
             showTime
             format="YYYY-MM-DD HH:mm:ss"
-            placeholder="End"
+            placeholder="结束时间"
             v-model="queryData.endTime"
             :open="endOpen"
             @openChange="handleEndOpenChange"
@@ -84,22 +85,8 @@ export default {
           startValue: null,
           endValue: null,
       },
-        endOpen: false,
+        endOpen: false
 
-      /*pickerOptions0: {
-        disabledDate: (time) => {
-          if (this.queryData.endTime !== null) {
-            return time.getTime() > this.queryData.endTime
-          }
-        }
-      },
-      pickerOptions1: {
-        disabledDate: (time) => {
-          if (this.queryData.startTime !== null) {
-            return time.getTime() < this.queryData.startTime
-          }
-        }
-      }*/
     }
   },
   created () {

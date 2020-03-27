@@ -140,7 +140,7 @@ export function VIDCard (code) {
 // 判断字符串是否不为空
 export function VIsNotEmpty (value) {
   let txt = value.toString().replace(/(^\s*)|(\s*$)/g, '')
-  if (txt === '' || value === undefined || value === null) {
+  if (txt === '' || !value) {
     return false
   } else {
     return true

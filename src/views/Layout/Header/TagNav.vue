@@ -127,8 +127,8 @@
                 @extend %cursor;
                 margin-#{$right}: 5px;
                  text-align: center;
-                 border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
+                 border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
                 border: 1px solid #cccccc;
                  border-bottom: none;
                 &:not(:first-child) {
