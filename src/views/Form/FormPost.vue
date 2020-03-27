@@ -45,7 +45,7 @@
                          :wrapper-col="{ span: 22 }">
                 <a-textarea v-model="queryData.receivers"
                             @change="handleReceivers"
-                            :autosize="{ minRows: 2, maxRows: 6 }"
+                            :autoSize="{ minRows: 2, maxRows: 6 }"
                             placeholder="请输入收件人，多个收件人之间用【英文逗号】分开！填写完成后点击【批量增加】进行校验！"
                 >
                 </a-textarea>
@@ -63,7 +63,7 @@
                          :wrapper-col="{ span: 22 }">
                 <a-textarea v-model="queryData.excludes"
                             @change="handleExcludes"
-                            :autosize="{ minRows: 2, maxRows: 6 }"
+                            :autoSize="{ minRows: 2, maxRows: 6 }"
                             placeholder="请输入收件人，多个收件人之间用【英文逗号】分开！填写完成后点击【批量增加】进行校验！"
                 >
                 </a-textarea>
@@ -81,12 +81,12 @@
                 <a-row :gutter="24">
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="金币：">
-                            <a-input @change="addMoney" maxlength="9" v-model="money" placeholder="请输入金币数额" allowClear></a-input>
+                            <a-input @change="addMoney" :maxLength="9" v-model="money" placeholder="请输入金币数额" allowClear></a-input>
                         </a-form-item>
                     </a-col>
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" label="钻石：">
-                            <a-input @change="addGold" maxlength="9" v-model="gold" placeholder="请输入钻石数额" allowClear></a-input>
+                            <a-input @change="addGold" :maxLength="9" v-model="gold" placeholder="请输入钻石数额" allowClear></a-input>
                         </a-form-item>
                     </a-col>
                 </a-row>
@@ -123,7 +123,7 @@
 
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" label="数量：">
-                            <a-input maxlength="9" v-model="goodsNum" placeholder="请输入数量"></a-input>
+                            <a-input :maxLength="9" v-model="goodsNum" placeholder="请输入数量"></a-input>
                         </a-form-item>
                     </a-col>
                     <a-col :span="6">
@@ -179,10 +179,10 @@
             </a-form-item>
 
             <a-form-item label="保留天数：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-input v-model="queryData.keepDays" maxlength="5"  placeholder="请输入保留天数"></a-input>
+                <a-input v-model="queryData.keepDays" :maxLength="5"  placeholder="请输入保留天数"></a-input>
             </a-form-item>
             <a-form-item label="充值金额：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-input v-model="queryData.rechargeNum" maxlength="5"  placeholder="请输入充值金融"></a-input>
+                <a-input v-model="queryData.rechargeNum" :maxLength="5"  placeholder="请输入充值金融"></a-input>
             </a-form-item>
 
             <a-form-item label="定时发送：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
@@ -250,7 +250,7 @@
                     <a-row :gutter="24">
                         <a-col :span="6">
                             <a-form-item label="发送间隔时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
-                                <a-input @change="handleSendInterval" v-model="queryData.sendInterval" maxlength="5"
+                                <a-input @change="handleSendInterval" v-model="queryData.sendInterval" :maxLength="5"
                                          placeholder="请输入发送间隔天数" ></a-input>
 
                             </a-form-item>
@@ -279,10 +279,10 @@
                     <a-tab-pane v-for="(item,index) in queryData.mulLanguages" :tab="item.desc" :key="item.desc">
 
 
-                            <a-input v-model="item.title" maxlength="128"
+                            <a-input v-model="item.title" :maxLength="128"
                                       :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件标题'"></a-input>
 
-                            <a-input type="textarea" v-model="item.content" maxlength="1000" :rows="6" style="margin-top: 20px"
+                            <a-input type="textarea" v-model="item.content" :maxLength="1000" :rows="6" style="margin-top: 20px"
                                       :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件内容'"></a-input>
 
                     </a-tab-pane>
@@ -298,7 +298,7 @@
             </a-form-item>
 
             <a-form-item label="等级：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-input v-model="queryData.level" maxlength="5" clearable placeholder="请输入等级"></a-input>
+                <a-input v-model="queryData.level" :maxLength="5" clearable placeholder="请输入等级"></a-input>
             </a-form-item>
 
 

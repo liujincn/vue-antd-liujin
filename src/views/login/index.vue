@@ -14,7 +14,7 @@
               </a-form-item>
 
               <a-form-item label="密码" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
-                <a-input  type="password" v-decorator="['passWord', { rules: [{ required: true, message: '密码不能为空' }] }]"></a-input>
+                <a-input-password v-decorator="['passWord', { rules: [{ required: true, message: '密码不能为空' }] }]"></a-input-password>
               </a-form-item>
               <a-button type="primary" html-type="submit" style="width:100%">登录</a-button>
             </a-form>
