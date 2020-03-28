@@ -1,9 +1,9 @@
 <template>
     <div class="layout">
         <a-layout id="components-layout-demo-custom-trigger" style=" height: 100%">
-            <layout-aside></layout-aside>
+            <aside-bar></aside-bar>
             <a-layout>
-                <layout-header></layout-header>
+                <header-bar></header-bar>
 
                 <a-layout-content
                         :style="{ padding: '24px', }">
@@ -18,14 +18,14 @@
     </div>
 </template>
 <script>
-    import LayoutAside from './Aside/Aside'
-    import LayoutHeader from './Header/Header'
+    import AsideBar from './Aside/AsideBar'
+    import HeaderBar from './Header/HeaderBar'
 
     export default {
         name: 'layout',
         components: {
-            LayoutAside,
-            LayoutHeader
+            AsideBar,
+            HeaderBar
         }
     }
 </script>
