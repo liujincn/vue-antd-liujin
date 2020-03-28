@@ -1,5 +1,5 @@
 <template>
-    <a-card :body-style="{padding: '24px 32px'}" :bordered="false">
+    <a-card :body-style="{padding: '24px 32px;'}" :bordered="false">
         <a-form :form="form" @submit="handleSubmit">
 
             <a-form-item label="游戏世界" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
@@ -81,12 +81,14 @@
                 <a-row :gutter="24">
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="金币：">
-                            <a-input @change="addMoney" :maxLength="9" v-model="money" placeholder="请输入金币数额" allowClear></a-input>
+                            <a-input @change="addMoney" :maxLength="9" v-model="money" placeholder="请输入金币数额"
+                                     allowClear></a-input>
                         </a-form-item>
                     </a-col>
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }" label="钻石：">
-                            <a-input @change="addGold" :maxLength="9" v-model="gold" placeholder="请输入钻石数额" allowClear></a-input>
+                            <a-input @change="addGold" :maxLength="9" v-model="gold" placeholder="请输入钻石数额"
+                                     allowClear></a-input>
                         </a-form-item>
                     </a-col>
                 </a-row>
@@ -101,7 +103,8 @@
                                 <template slot='title'>系统只模糊搜索前20条物品</template>
                                 <a-auto-complete v-model="goodsId" @select="handleSelectGoodsId" placeholder="请输入物品ID">
                                     <template slot="dataSource">
-                                        <a-select-option v-for="item in goodItems" :key="item.id">{{item.id}}</a-select-option>
+                                        <a-select-option v-for="item in goodItems" :key="item.id">{{item.id}}
+                                        </a-select-option>
                                     </template>
                                 </a-auto-complete>
                             </a-tooltip>
@@ -112,9 +115,11 @@
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="物品名称：">
                             <a-tooltip>
                                 <template slot='title'>系统只模糊搜索前20条物品</template>
-                                <a-auto-complete v-model="goodsName" @select="handleSelectGoodsName" placeholder="请输入物品名称">
+                                <a-auto-complete v-model="goodsName" @select="handleSelectGoodsName"
+                                                 placeholder="请输入物品名称">
                                     <template slot="dataSource">
-                                        <a-select-option v-for="item in goodItems" :key="item.name">{{item.name}}</a-select-option>
+                                        <a-select-option v-for="item in goodItems" :key="item.name">{{item.name}}
+                                        </a-select-option>
                                     </template>
                                 </a-auto-complete>
                             </a-tooltip>
@@ -165,9 +170,9 @@
                     <a-col :span="6">
                         <a-form-item :label-col="{ span: 8}" :wrapper-col="{ span: 16 }" label="此时间：">
                             <a-date-picker style="width:230px"
-                                    :disabledDate="pickerOptionsEnd"
+                                           :disabledDate="pickerOptionsEnd"
                                            v-model="queryData.roleCreateBefore"
-                                    placeholder="选择日期">
+                                           placeholder="选择日期">
                             </a-date-picker>
                         </a-form-item>
                     </a-col>
@@ -177,61 +182,56 @@
             </a-form-item>
 
             <a-form-item label="保留天数：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-input v-model="queryData.keepDays" :maxLength="5"  placeholder="请输入保留天数"></a-input>
+                <a-input v-model="queryData.keepDays" :maxLength="5" placeholder="请输入保留天数"></a-input>
             </a-form-item>
             <a-form-item label="充值金额：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-input v-model="queryData.rechargeNum" :maxLength="5"  placeholder="请输入充值金融"></a-input>
+                <a-input v-model="queryData.rechargeNum" :maxLength="5" placeholder="请输入充值金融"></a-input>
             </a-form-item>
 
             <a-form-item label="定时发送：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
 
-                <a-switch @change="changeTaskType" checkedChildren="开" unCheckedChildren="关" v-model="isTiming"></a-switch>
+                <a-switch @change="changeTaskType" checkedChildren="开" unCheckedChildren="关"
+                          v-model="isTiming"></a-switch>
                 <div v-if="isTiming===true">
-                <a-row :gutter="24">
-                    <a-col :span="6">
-                        <a-form-item label="定时起始时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
-                            <a-date-picker style="width:230px"
-                                    :disabledDate="sendStart"
-                                           format="YYYY-MM-DD"
-                                           v-model="queryData.sendStartDate"
-                                    placeholder="选择日期">
-                            </a-date-picker>
+                    <a-row :gutter="24">
+                        <a-col :span="6">
+                            <a-form-item label="定时起始时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+                                <a-date-picker style="width:230px"
+                                               :disabledDate="sendStart"
+                                               format="YYYY-MM-DD"
+                                               v-model="queryData.sendStartDate"
+                                               placeholder="选择日期">
+                                </a-date-picker>
 
-                        </a-form-item>
+                            </a-form-item>
 
-                    </a-col>
-                    <a-col :span="6">
-                        <a-form-item label="定时结束时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
-                            <a-date-picker
-                                    style="width:230px"
-                                    format="YYYY-MM-DD"
-                                    :disabledDate="sendEnd"
-                                    v-model="queryData.sendEndDate"
-                                    placeholder="选择日期">
-                            </a-date-picker>
+                        </a-col>
+                        <a-col :span="6">
+                            <a-form-item label="定时结束时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+                                <a-date-picker
+                                        style="width:230px"
+                                        format="YYYY-MM-DD"
+                                        :disabledDate="sendEnd"
+                                        v-model="queryData.sendEndDate"
+                                        placeholder="选择日期">
+                                </a-date-picker>
 
-                        </a-form-item>
+                            </a-form-item>
 
-                    </a-col>
-                </a-row>
-                <a-row :gutter="24">
-                    <a-col :span="6">
-                        <a-form-item label="定时发送时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
-                            <a-time-picker
-                                    style="width:230px"
-                                    v-model="times"
-                                    :defaultOpenValue="moment('00:00:00', 'HH:mm:ss')"
-                                    placeholder="选择时间">
-                            </a-time-picker>
+                        </a-col>
+                    </a-row>
+                    <a-row :gutter="24">
+                        <a-col :span="6">
+                            <a-form-item label="定时发送时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+                                <time-picker @changeTime="changeTime" style=" width: 230px"></time-picker>
+                            </a-form-item>
 
-                        </a-form-item>
-
-                    </a-col>
-                    <a-col :span="6">
-                        <a-button @click="addTimesTag" type="primary">添加</a-button>
-                        <a-button @click="clearTimesTags" type="danger" style="margin-left: 20px">清空</a-button>
-                    </a-col>
-                </a-row>
+                        </a-col>
+                        <a-col :span="6">
+                            <a-button @click="addTimesTag" type="primary">添加</a-button>
+                            <a-button @click="clearTimesTags" type="danger" style="margin-left: 20px">清空</a-button>
+                        </a-col>
+                    </a-row>
                     <div class="red-tips">
                         {{timesTips}}
                     </div>
@@ -249,7 +249,7 @@
                         <a-col :span="6">
                             <a-form-item label="发送间隔时间：" :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
                                 <a-input @change="handleSendInterval" v-model="queryData.sendInterval" :maxLength="5"
-                                         placeholder="请输入发送间隔天数" ></a-input>
+                                         placeholder="请输入发送间隔天数"></a-input>
 
                             </a-form-item>
 
@@ -260,11 +260,12 @@
                     </a-row>
                 </div>
             </a-form-item>
-            <a-form-item label="适用语言："  :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-checkbox :indeterminate="isIndeterminate" :checked="checkAll" @change="handleCheckAllChange">全选</a-checkbox>
+            <a-form-item label="适用语言：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
+                <a-checkbox :indeterminate="isIndeterminate" :checked="checkAll" @change="handleCheckAllChange">全选
+                </a-checkbox>
                 <br>
                 <a-checkbox-group v-model="checkedLanguage" @change="handleCheckedChange">
-                    <a-checkbox v-for="(item,index) in language" :value="item" :key="index" >{{item.desc}}</a-checkbox>
+                    <a-checkbox v-for="(item,index) in language" :value="item" :key="index">{{item.desc}}</a-checkbox>
                 </a-checkbox-group>
                 <a-form-item>
                     <a-button @click="languageDialog" type="primary">添加</a-button>
@@ -272,21 +273,22 @@
                 </a-form-item>
 
             </a-form-item>
-            <a-form-item label="邮件内容："  :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
+            <a-form-item label="邮件内容：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
                 <a-tabs v-model="activeName">
                     <a-tab-pane v-for="(item,index) in queryData.mulLanguages" :tab="item.desc" :key="item.desc">
 
 
-                            <a-input v-model="item.title" :maxLength="128"
-                                      :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件标题'"></a-input>
+                        <a-input v-model="item.title" :maxLength="128"
+                                 :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件标题'"></a-input>
 
-                            <a-input type="textarea" v-model="item.content" :maxLength="1000" :rows="6" style="margin-top: 20px"
-                                      :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件内容'"></a-input>
+                        <a-input type="textarea" v-model="item.content" :maxLength="1000" :rows="6"
+                                 style="margin-top: 20px"
+                                 :placeholder="'请输入'+ queryData.mulLanguages[index].desc+'邮件内容'"></a-input>
 
                     </a-tab-pane>
                 </a-tabs>
             </a-form-item>
-            <a-form-item label="邮件发送原因："  :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
+            <a-form-item label="邮件发送原因：" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
                 <a-input
                         type="textarea"
                         :rows="4"
@@ -310,7 +312,8 @@
 
                 <a-form-item label="语种" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
                     <a-select placeholder="选择需要增加的语种" @change="handleChange">
-                        <a-select-option v-for="item in languageData.slice(2)" :key="item.id" >{{item.name}}</a-select-option>
+                        <a-select-option v-for="item in languageData.slice(2)" :key="item.id">{{item.name}}
+                        </a-select-option>
                     </a-select>
                 </a-form-item>
                 <a-form-item
@@ -328,9 +331,13 @@
 <script>
     import moment from 'moment'
     import {VIsNotEmpty} from '@/util/formValidator'
+    import TimePicker from '@/components/TimePicker'
 
     export default {
         name: 'form-post',
+        components: {
+            TimePicker
+        },
         data() {
             return {
                 form: this.$form.createForm(this),
@@ -373,12 +380,12 @@
                         {languageId: 2, title: '', content: '', desc: '英文'}
                     ],
                     roleCreateBefore: null,
-                    roleCreateAfter:null,
+                    roleCreateAfter: null,
                     keepDays: '30',
                     level: '0',
                     taskType: 1,
                     sendStartDate: null,
-                    sendEndDate:null,
+                    sendEndDate: null,
                     sendTimes: [],
                     sendInterval: 0,
                     rechargeNum: 0,
@@ -397,8 +404,8 @@
                 goodsId: '',
                 goodsNum: '0',
                 goodsTips: '',
-                isTiming:true,
-                times:null,
+                isTiming: true,
+                times: null,
                 timesTips: '',
                 checkAll: true,
                 checkedLanguage: [],
@@ -413,22 +420,22 @@
                 },
                 languageFormVisible: false,
                 activeName: '中文',
-                languageData:[
-            {id: 1, name: "中文"},
-             {id: 2, name: "英文"},
-             {id: 3, name: "繁体"},
-             {id: 4, name: "印尼语"},
-             {id: 5, name: "菲律宾"},
-             {id: 6, name: "越南"},
-             {id: 7, name: "泰语"},
-             {id: 8, name: "葡萄牙语"},
-             {id: 9, name: "韩语"},
-             {id: 10, name: "法语"},
-             {id: 11, name: "德语"},
-             {id: 12, name: "马来语"}]
+                languageData: [
+                    {id: 1, name: "中文"},
+                    {id: 2, name: "英文"},
+                    {id: 3, name: "繁体"},
+                    {id: 4, name: "印尼语"},
+                    {id: 5, name: "菲律宾"},
+                    {id: 6, name: "越南"},
+                    {id: 7, name: "泰语"},
+                    {id: 8, name: "葡萄牙语"},
+                    {id: 9, name: "韩语"},
+                    {id: 10, name: "法语"},
+                    {id: 11, name: "德语"},
+                    {id: 12, name: "马来语"}]
             }
         },
-        created () {
+        created() {
             this.defaultCheck()
         },
         methods: {
@@ -521,14 +528,13 @@
             },
             // 增加物品tag
             addGoodsTag() {
-                if(this.goodsName &&this.goodsId&&this.goodsNum)
-                {
+                if (this.goodsName && this.goodsId && this.goodsNum) {
                     this.goodsTips = ''
                     let goodsObj = {'id': this.goodsId, 'num': parseInt(this.goodsNum), 'name': this.goodsName}
                     this.goodsList.push(goodsObj)
                     this.queryData.goodsItems = this.goodsList
                 }
-                else{
+                else {
                     this.goodsTips = '物品道具输入框不能为空！'
                 }
 
@@ -540,18 +546,18 @@
                 this.queryData.goodsItems = null
             },
             // 物品tag关闭
-            handleGoodsTagClose (tag) {
+            handleGoodsTagClose(tag) {
                 this.goodsList.splice(this.goodsList.indexOf(tag), 1)
             },
             // 时间角色创建选择
             pickerOptionsStart(startValue) {
                 const endValue = this.queryData.roleCreateBefore;
                 if (!startValue || !endValue) {
-                       return false
-                    }
+                    return false
+                }
                 return startValue.valueOf() > endValue.valueOf();
             },
-            pickerOptionsEnd(endValue){
+            pickerOptionsEnd(endValue) {
                 const startValue = this.queryData.roleCreateAfter;
                 if (!endValue || !startValue) {
                     return false
@@ -560,7 +566,7 @@
 
             },
             // 是否定时发送
-            changeTaskType () {
+            changeTaskType() {
                 if (this.isTiming) {
                     this.queryData.taskType = 1
                     this.queryData.sendInterval = 0
@@ -580,7 +586,7 @@
                 }
                 return startValue.valueOf() > endValue.valueOf()
             },
-            sendEnd(endValue){
+            sendEnd(endValue) {
                 const startValue = this.queryData.sendStartDate
                 if (!endValue || !startValue) {
                     return false
@@ -588,8 +594,13 @@
                 return startValue.valueOf() >= endValue.valueOf();
 
             },
+            // 时间
+            changeTime(value) {
+                this.times = value
+                console.log(typeof (value))
+            },
             // 增加定时tag
-            addTimesTag () {
+            addTimesTag() {
                 if (!this.times) {
                     this.timesTips = '定时发送时间不能为空！'
                     return false
@@ -599,33 +610,33 @@
                     } else {
                         this.timesTips = ''
                         const sendTime = []
-                        sendTime.push(moment(this.times).format("HH:mm:ss"))
+                        sendTime.push(this.times)
                         for (let i = 0; i < sendTime.length; i++) {
                             if (this.queryData.sendTimes.indexOf(sendTime[i]) === -1) {
                                 this.queryData.sendTimes.push(sendTime[i])
                             } else {
-                                this.$message.warning( '当前选择的定时发送时间已存在')
+                                this.$message.warning('当前选择的定时发送时间已存在')
                             }
                         }
                     }
                 }
             },
             // 清除定时tag
-            clearTimesTags () {
+            clearTimesTags() {
                 this.timesTips = ''
                 this.times = null
                 this.queryData.sendTime = []
             },
             // 定时tag关闭
-            handleTimesTagClose (tag) {
+            handleTimesTagClose(tag) {
                 this.queryData.sendTimes.splice(this.queryData.sendTimes.indexOf(tag), 1)
             },
             // 增加间隔时间
-            handleSendInterval (e) {
-                    this.queryData.sendInterval = e.target.value.replace(/[^\d]/g, '')
+            handleSendInterval(e) {
+                this.queryData.sendInterval = e.target.value.replace(/[^\d]/g, '')
             },
             // 默认全选
-            defaultCheck () {
+            defaultCheck() {
                 let defaultCheck = []
                 this.language.map(function (item) {
                     defaultCheck.push(item)
@@ -634,7 +645,7 @@
                 this.queryData.mulLanguages = defaultCheck
             },
             //  语种的全选
-            handleCheckAllChange (e) {
+            handleCheckAllChange(e) {
                 if (e.target.checked === true) {
                     this.queryData.mulLanguages = this.language
                     this.checkedLanguage = this.language
@@ -644,9 +655,9 @@
                 }
             },
             //  语种选择
-            handleCheckedChange (value) {
-                if(value.length===0)
-                {this.$message.error('至少要选择一种语言！')
+            handleCheckedChange(value) {
+                if (value.length === 0) {
+                    this.$message.error('至少要选择一种语言！')
                     this.checkedLanguage = [this.language[0]]
                     return false
                 }
@@ -662,7 +673,7 @@
                 this.activeName = this.checkedLanguage[0].desc
             },
             //  增加选择
-            languageDialog () {
+            languageDialog() {
                 this.languageModel.languageId = ''
                 this.languageModel.name = ''
                 this.languageFormVisible = true
@@ -670,19 +681,19 @@
             handleCancel() {
                 this.languageFormVisible = false
             },
-            handleChange (value) {
-                this.languageModel.languageId=value
+            handleChange(value) {
+                this.languageModel.languageId = value
             },
-            submitLanguage () {
+            submitLanguage() {
 
-                        for (let item of this.languageData) {
-                            if (this.languageModel.languageId === item.id) {
-                                this.language.push({languageId: item.id, desc: item.name, title: '', content: ''})
-                                this.languageData.splice(this.languageData.indexOf(item), 1)
-                            }
-                        }
-                this.languageFormVisible = false
+                for (let item of this.languageData) {
+                    if (this.languageModel.languageId === item.id) {
+                        this.language.push({languageId: item.id, desc: item.name, title: '', content: ''})
+                        this.languageData.splice(this.languageData.indexOf(item), 1)
                     }
+                }
+                this.languageFormVisible = false
+            }
         }
     }
 </script>

@@ -68,19 +68,11 @@
                             </a-select>
                         </a-form-model-item>
                         <a-form-model-item class="input">
-                            <a-range-picker style="width:420px"
-                                            v-model="time"
-                                            :showTime="{ format: 'HH:mm' }"
-                                            format="YYYY-MM-DD HH:mm"
-                                            :placeholder="['开始时间', '结束时间']"
-                            />
-
+                            <date-picker @startTime="getStartTime" @endTime="getEndTime"></date-picker>
                         </a-form-model-item>
                         <a-form-model-item class="input">
-                            <a-button type="primary" @click="onSubmit">查询</a-button>
-                        </a-form-model-item>
-                        <a-form-model-item class="input">
-                            <a-button type="primary" @click="resetForm">重置</a-button>
+                            <a-button type="primary" @click="onSubmit('ruleForm')">查询</a-button>
+                            <a-button type="primary" @click="resetForm('ruleForm')" style="margin-left: 10px">重置</a-button>
                         </a-form-model-item>
                     </a-row>
 
@@ -120,7 +112,7 @@
 
     import SingleSelector from '@/components/SingleSelector'
     import {simpleFormat} from '@/util/date'
-    //import DatePicker from '@/components/DatePicker'
+    import DatePicker from '@/components/DatePicker'
     import ServerItem from '@/components/ServerItem'
 
     export default {
@@ -128,7 +120,7 @@
         components: {
             SingleSelector,
             ServerItem,
-            //DatePicker
+            DatePicker
 
         },
         data() {
@@ -189,8 +181,8 @@
                     reason: undefined,
                     sType: 1,
                     sTypeValue: null,
-                    startTime: '',
-                    endTime: ''
+                    startTime:null,
+                    endTime: null
                 },
                 rules: {
                     serverId: [{required: false, message: '请选择区服', trigger: 'change'}],
@@ -234,19 +226,18 @@
         },
         methods: {
             //提交
-            onSubmit() {
-                this.$refs.ruleForm.validate(valid => {
+            onSubmit(formName) {
+                this.$refs[formName].validate(valid => {
                     if (valid) {
-                         console.log(this.time)
+                        this.queryResult=this.test
+                         console.log(this.form)
                     } else {
                         return false;
                     }
                 })
             },
-            resetForm() {
-
-                this.$refs.ruleForm.resetFields()
-                console.log(this.form)
+            resetForm(formName) {
+                this.$refs[formName].resetFields()
             },
             selectServerId(value) {
                 this.form.serverId = value
@@ -256,7 +247,6 @@
             },
             //  切换查询物品id/名称
             changeQueryTypes(value) {
-                console.log(value)
                 this.form.sTypeValue = null
                 this.form.sType = value
             },
@@ -281,13 +271,12 @@
                     this.isDisabled = true
                 }
             },
-            /*  getStartTime(value) {
-                  this.queryData.startTime = value
+              getStartTime(date) {
+                  this.form.startTime = date
               },
-              getEndTime(value) {
-                  this.queryData.endTime = value
-              }*/
-
+              getEndTime(date) {
+                  this.form.endTime = date
+              }
         },
         filters: {
             formatDate(value) {
@@ -307,14 +296,5 @@
         width: 200px;
     }
 
-    .ant-form-item {
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-
-    .pages {
-        margin-top: 20px
-    }
     .input{ display: inline-block}
 </style>
