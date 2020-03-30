@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0a3fdd"],{"0513":function(n,e,a){"use strict";a.r(e);var t=function(){var n=this,e=n.$createElement,a=n._self._c||e;return a("div",[n._v("\n  角色管理\n")])},l=[],u={name:"role-manage"},c=u,r=a("2877"),o=Object(r["a"])(c,t,l,!1,null,null,null);e["default"]=o.exports}}]);
-//# sourceMappingURL=chunk-2d0a3fdd.62f83ad6.js.map

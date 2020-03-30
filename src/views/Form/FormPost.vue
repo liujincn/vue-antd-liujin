@@ -3,12 +3,7 @@
         <a-form :form="form" @submit="handleSubmit">
 
             <a-form-item label="游戏世界" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
-                <a-select
-                        placeholder="请选择服务器"
-                        v-decorator="['serverId',{rules: [{ required: true, message: '请选择服务器' }]}]"
-                >
-                    <a-select-option v-for="(item,index) in options" :key="index">{{item.name}}</a-select-option>
-                </a-select>
+                <server-item @input="selectServerId" v-model="queryData.serverId"></server-item>
             </a-form-item>
 
             <a-form-item label="运营渠道" :label-col="{ span: 2 }" :wrapper-col="{ span: 22 }">
@@ -332,11 +327,13 @@
     import moment from 'moment'
     import {VIsNotEmpty} from '@/util/formValidator'
     import TimePicker from '@/components/TimePicker'
+    import ServerItem from '@/components/ServerItem'
 
     export default {
         name: 'form-post',
         components: {
-            TimePicker
+            TimePicker,
+            ServerItem
         },
         data() {
             return {
@@ -440,6 +437,9 @@
         },
         methods: {
             moment,
+            selectServerId(value) {
+                this.queryData.serverId = value
+            },
             //提交
             handleSubmit() {
                 this.form.validateFields((err, values) => {

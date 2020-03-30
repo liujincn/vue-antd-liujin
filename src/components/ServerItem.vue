@@ -6,24 +6,26 @@
     </a-select>
 </template>
 <script>
+    import axios from 'axios'
     export default {
         name: 'ServerItems',
-        data () {
+        data() {
             return {
-                serverId:undefined,
-                server: [
-                    {id:1001,name:'测试一区'},
-                    {id:1002,name:'测试二区'},
-                    {id:1003,name:'测试三区'},
-                    {id:1004,name:'测试四区'},
-                    {id:1005,name:'测试五区'},
-                    {id:1006,name:'测试六区'},
-                    {id:1007,name:'测试七区'}
-                ]
+                serverId: undefined,
+                server: []
             }
         },
+        created() {
+            this.getData()
+        },
         methods: {
-            changeValue (value) {
+            getData() {
+                axios.get('/api/server').then(res => {
+                    this.server = res.data.server
+                    console.log(this.server)
+                })
+            },
+            changeValue(value) {
                 this.serverId = value
                 this.$emit('input', value)
             }
@@ -34,6 +36,5 @@
 <style scoped>
     .input-item {
         display: inline-block;
-        width: 200px;
     }
 </style>
