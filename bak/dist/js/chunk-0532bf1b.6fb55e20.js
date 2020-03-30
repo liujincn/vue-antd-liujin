@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-0532bf1b"],{"94e6":function(n,c,t){"use strict";t.r(c);var e=function(){var n=this,c=n.$createElement,t=n._self._c||c;return t("div",{staticClass:"addArticle"},[n._v("\n    四级目录\n\n")])},a=[],s={name:"four"},u=s,i=(t("cc23"),t("2877")),r=Object(i["a"])(u,e,a,!1,null,"28d3e48a",null);c["default"]=r.exports},9569:function(n,c,t){},cc23:function(n,c,t){"use strict";var e=t("9569"),a=t.n(e);a.a}}]);
+//# sourceMappingURL=chunk-0532bf1b.6fb55e20.js.map

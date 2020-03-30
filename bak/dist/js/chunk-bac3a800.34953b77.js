@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-bac3a800"],{1182:function(n,a,c){"use strict";c.r(a);var t=function(){var n=this,a=n.$createElement,c=n._self._c||a;return c("div",{staticClass:"addArticle"},[n._v("\n    二级目录\n\n")])},e=[],s={name:"second"},i=s,u=(c("1a1a"),c("2877")),r=Object(u["a"])(i,t,e,!1,null,"acc1ad0a",null);a["default"]=r.exports},"1a1a":function(n,a,c){"use strict";var t=c("365c"),e=c.n(t);e.a},"365c":function(n,a,c){}}]);
+//# sourceMappingURL=chunk-bac3a800.34953b77.js.map
