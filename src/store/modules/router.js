@@ -1,20 +1,20 @@
-import {defaultRouter, addRouter} from '@/router'
+import {defaultRouter,userRouters} from '@/router'
 
 const router = {
     state: {
         routers: [],
-        addRouters: []
+        userRouters: []
     },
     mutations: {
         SET_ROUTERS: (state, routers) => {
-            state.addRouters = routers  // 保存动态路由用来addRouter
-            state.routers = defaultRouter.concat(routers) // 所有有权限的路由表，用来生成菜单列表
+            state.userRouters = routers
+            state.routers = defaultRouter.concat(routers)
         }
     },
     actions: {
-        newRoutes({commit}) {
-            let newArr = [...addRouter]
-            commit('SET_ROUTERS', newArr)
+        setRouters({commit}) {
+            const routes = [...userRouters]  //还没有做权限判断，直接取userRouters
+            commit('SET_ROUTERS', routes)
         }
     }
 }

@@ -43,8 +43,8 @@
         },
         watch: {
             // 监听浏览器直接输入路由，将此路由添加到tabnavBox
-            '$route.path': function (val) {
-                this.selectMenu(val)
+            '$route': function (route) {
+                this.selectMenu(route.path)
             }
         },
         mounted() {
@@ -56,6 +56,7 @@
             getRoutes() {
                 let routes = this.$store.getters.routers.filter(item => !item.hidden)
                 this.routes = routes
+                console.log(this.routes)
             },
             //  菜单选择
             selectMenu(key) {

@@ -6,7 +6,7 @@
                 <a-form-model ref="ruleForm" :model="form" :rules="rules">
                     <a-row>
                         <a-form-model-item class="input-item" prop="serverId">
-                            <server-item @input="selectServerId" v-model="form.serverId"></server-item>
+                            <server-item v-model="form.serverId"></server-item>
 
                         </a-form-model-item>
 
@@ -14,16 +14,16 @@
                             <single-selector @select="selectRoleType" v-model="queryType"></single-selector>
                         </a-form-model-item>
 
-                        <a-form-model-item class="input-item">
+                        <a-form-model-item class="input-item" :style="{marginLeft:'10px'}">
                             <a-select v-model="form.goodsType" placeholder="物品类型" allowClear>
                                 <a-select-option v-for="item in goodsTypes" :key="item.id" :value="item.id">
                                     {{item.name}}
                                 </a-select-option>
                             </a-select>
                         </a-form-model-item>
-
-                        <a-form-model-item class="input-item">
+                        <a-form-model-item class="input-item" :style="{marginRight:'10px'}">
                             <a-select v-model="form.sType" placeholder="请选择物品类型" @change="changeQueryTypes">
+
                                 <a-select-option
                                         v-for="item in queryTypes"
                                         :key="item.id"
@@ -71,8 +71,8 @@
                             <date-picker @startTime="getStartTime" @endTime="getEndTime"></date-picker>
                         </a-form-model-item>
                         <a-form-model-item class="input">
-                            <a-button type="primary" @click="onSubmit('ruleForm')">查询</a-button>
-                            <a-button type="primary" @click="resetForm('ruleForm')" style="margin-left: 10px">重置</a-button>
+                            <a-button type="primary" @click="onSubmit('ruleForm')"  :style="{marginLeft:'10px'}">查询</a-button>
+                            <a-button type="primary" @click="resetForm('ruleForm')" :style="{marginLeft:'10px'}">重置</a-button>
                         </a-form-model-item>
                     </a-row>
 
@@ -232,15 +232,12 @@
                         this.queryResult=this.test
                          console.log(this.form)
                     } else {
-                        return false;
+                        return false
                     }
                 })
             },
             resetForm(formName) {
                 this.$refs[formName].resetFields()
-            },
-            selectServerId(value) {
-                this.form.serverId = value
             },
             selectRoleType(value) {
                 this.queryType = value
@@ -294,7 +291,9 @@
     .input-item {
         display: inline-block;
         width: 200px;
+         margin-right: 10px;
     }
 
     .input{ display: inline-block}
+    .ant-form-item{ margin-bottom: 10px}
 </style>

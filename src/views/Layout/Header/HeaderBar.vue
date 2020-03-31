@@ -7,6 +7,12 @@
             <a-dropdown :trigger="['click']">
                 <a class="ant-dropdown-link" href="#"> {{$store.getters.token}}  <a-icon type="down" /></a>
                 <a-menu slot="overlay" @click="loginOut">
+                    <a-menu-item key="info">
+                        个人资料
+                    </a-menu-item>
+                    <a-menu-item key="edit">
+                        修改密码
+                    </a-menu-item>
                     <a-menu-item key="loginOut">退出
                     </a-menu-item>
                 </a-menu>

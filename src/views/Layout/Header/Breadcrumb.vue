@@ -1,7 +1,7 @@
 <template>
     <a-breadcrumb separator=">" class="app-breadcrumb">
-        <a-breadcrumb-item v-for="item in breadList" :key="item.path" v-if="item.meta.title">
-            <router-link :to="item.path">{{item.meta.title}}</router-link>
+        <a-breadcrumb-item v-for="item in breadList" :key="item.path">
+            <router-link :to="item.path" v-if="item.meta.title">{{item.meta.title}}</router-link>
         </a-breadcrumb-item>
     </a-breadcrumb>
 </template>

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const user = {
+const token = {
     state: {
         token: Cookies.get('token')
     },
@@ -12,9 +12,12 @@ const user = {
     },
     actions: {
         setToken({commit}, token) {
-            commit('SET_TOKEN', token)
+            return new Promise((resolve, reject) => {
+                commit('SET_TOKEN', token)
+                resolve()
+            })
         }
     },
 }
 
-export default user
+export default token

@@ -1,18 +1,18 @@
 <template>
-    <a-select placeholder="请选择区服" v-model="serverId" @change="changeValue" class="input-item">
+    <a-select placeholder="请选择渠道" v-model="channelId" @change="changeValue" class="input-item">
 
-        <a-select-option v-for="item in server" :value="item.id" :key="item.id">{{item.name}}</a-select-option>
+        <a-select-option v-for="item in channel" :value="item.id" :key="item.id">{{item.name}}</a-select-option>
 
     </a-select>
 </template>
 <script>
     import axios from 'axios'
     export default {
-        name: 'ServerItem',
+        name: 'ChannelItem',
         data() {
             return {
-                serverId: undefined,
-                server: []
+                channelId: undefined,
+                channel: []
             }
         },
         created() {
@@ -20,12 +20,12 @@
         },
         methods: {
             getData() {
-                axios.get('/api/server').then(res => {
-                    this.server = res.data.server
+                axios.get('/api/channel').then(res => {
+                    this.channel = res.data.channel
                 })
             },
             changeValue(value) {
-                this.serverId = value
+                this.channelId = value
                 this.$emit('input', value)
             }
         }

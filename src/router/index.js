@@ -15,21 +15,21 @@ const Second = () => import('@/views/Multistage/Second')
 const Three = () => import('@/views/Multistage/Three')
 const Four = () => import('@/views/Multistage/Four')
 Vue.use(Router)
-let defaultRouter = [
+const defaultRouter = [
     {
         path: '/',
         redirect: '/index',
-        hidden: true,
+        hidden: true
     },
     {
         path: '/404',
         component: NotFound,
-        hidden: true,
+        hidden: true
     },
     {
         path: '/login',
         component: Login,
-        hidden: true,
+        hidden: true
     },
     {
         path: '/index',
@@ -41,10 +41,13 @@ let defaultRouter = [
         children: [
             {
                 path: '/index',
-                component: Home,
+                component: Home
             }
         ]
-    },
+    }
+]
+
+const userRouters = [
     {
         path: '/form',
         name: 'form',
@@ -158,17 +161,11 @@ let defaultRouter = [
             }
         ]
     },
-
 ]
-
-let addRouter = [
-
-]
-export {defaultRouter, addRouter}
 export default new Router({
     scrollBehavior: () => ({y: 0}),
     routes: defaultRouter
 })
-
+export {defaultRouter, userRouters}
 
 

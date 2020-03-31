@@ -1,18 +1,20 @@
 <template>
-    <a-select placeholder="请选择区服" v-model="serverId" @change="changeValue" class="input-item">
+    <a-select placeholder="请选择系统" v-model="systemId" @change="changeValue" class="input-item">
 
-        <a-select-option v-for="item in server" :value="item.id" :key="item.id">{{item.name}}</a-select-option>
+        <a-select-option v-for="item in system" :value="item.id" :key="item.id">{{item.name}}</a-select-option>
 
     </a-select>
 </template>
 <script>
     import axios from 'axios'
     export default {
-        name: 'ServerItem',
+        name: 'SystemItem',
         data() {
             return {
-                serverId: undefined,
-                server: []
+                systemId: undefined,
+                system: [
+
+                ]
             }
         },
         created() {
@@ -20,12 +22,12 @@
         },
         methods: {
             getData() {
-                axios.get('/api/server').then(res => {
-                    this.server = res.data.server
+                axios.get('/api/system').then(res => {
+                    this.system = res.data.system
                 })
             },
             changeValue(value) {
-                this.serverId = value
+                this.systemId = value
                 this.$emit('input', value)
             }
         }
