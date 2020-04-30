@@ -1,19 +1,19 @@
 <template>
-    <div class="addArticle">
-        二级目录
+  <div class="addArticle">
+    二级目录
 
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'second',
-    }
+export default {
+  name: 'second',
+}
 </script>
 
 <style scoped>
-    .subBtn{
-        width: 100px;
-        margin: 0 auto;
-    }
+.subBtn {
+  width: 100px;
+  margin: 0 auto;
+}
 </style>

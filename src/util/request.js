@@ -1,9 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 
-if (localStorage.getItem('areaId') !== 'undefined') {
-  axios.defaults.headers.common['areaId'] = localStorage.getItem('areaId')
-}
+
 
 var service = axios.create({
   baseURL: process.env.BASE_API,

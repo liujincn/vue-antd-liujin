@@ -1,11 +1,11 @@
 <template>
-    <div >
-        Bug反馈
-    </div>
+  <div>
+    Bug反馈
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'bug',
-    }
+export default {
+  name: 'bug',
+}
 </script>
