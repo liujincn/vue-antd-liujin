@@ -7,28 +7,16 @@
         <a-card class="login-module">
           <h2 style=" text-align: center">密码登录</h2>
 
-          <a-form-model ref="ruleForm"
-                                     :model="form"
-                        :rules="rules">
-
-            <a-form-model-item label="账号"
-                               :label-col="{ span: 4 }"
-                               :wrapper-col="{ span: 20 }">
-              <a-input v-model="form.username"
-                       placeholder="请输入用户名"></a-input>
+          <a-form-model ref="ruleForm" :model="form" :rules="rules">
+            <a-form-model-item label="账号" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
+              <a-input v-model="form.username" placeholder="请输入用户名"></a-input>
             </a-form-model-item>
 
-            <a-form-model-item label="密码"
-                               :label-col="{ span: 4 }"
-                               :wrapper-col="{ span: 20 }">
-              <a-input-password v-model="form.password"
-                                placeholder="请输入密码"></a-input-password>
+            <a-form-model-item label="密码" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
+              <a-input-password v-model="form.password" placeholder="请输入密码"></a-input-password>
             </a-form-model-item>
-            <a-button type="primary"
-                      @click="onSubmit('ruleForm')"
-                      style="width:100%">登录</a-button>
+            <a-button type="primary" @click="onSubmit('ruleForm')" style="width:100%">登录</a-button>
           </a-form-model>
-
         </a-card>
       </div>
     </div>
@@ -55,7 +43,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$store.dispatch('setToken', this.form.username).then(() => {
-            this.$router.push({ path: '/' })
+            this.$router.push({ path: '/' }, () => { }, () => { }) // https://blog.csdn.net/qq940390/article/details/103232115
           })
         } else {
           return false

@@ -1,9 +1,4 @@
-/**
- * Created by WebStorm.
- * User: nirongxu
- * Date: 2018/12/15
- * Description: 文件描述
- */
+
 import Vue from 'vue'
 
 Vue.directive('roleBtn', {

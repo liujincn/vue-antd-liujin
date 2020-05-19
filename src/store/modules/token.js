@@ -11,11 +11,8 @@ const token = {
     }
   },
   actions: {
-    setToken ({ commit }, token) {
-      return new Promise((resolve, reject) => {
-        commit('SET_TOKEN', token)
-        resolve()
-      })
+    async setToken ({ commit }, token) {
+      await commit('SET_TOKEN', token)
     }
   },
 }

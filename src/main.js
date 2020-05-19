@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
       if (store.getters.userRouters.length === 0) {
         store.dispatch('setRouters')
         router.addRoutes(store.getters.userRouters)
-        next()
+        next({ ...to, replace: true })
       }
       else {
         next()
